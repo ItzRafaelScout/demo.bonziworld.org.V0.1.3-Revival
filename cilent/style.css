@@ -1,0 +1,391 @@
+@font-face{
+    font-family: "Tahoma";
+    src: url("../fonts/Tahoma.woff");
+}
+*{
+    font-family: "Tahoma";
+}
+body{
+    margin: 0;
+    overscroll-behavior: none;
+}
+
+#top_bar, #bottom_bar, #blur, #divider, #login_card, #readme_block, #login img, #loading{
+    position: absolute;
+}
+
+#login{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #8b5adc;
+}
+
+#top_bar, #bottom_bar{
+    width: 100%;
+    background-color: #37009C;
+}
+#top_bar{
+    height: 100px;
+}
+#top_bar div{
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom:0px;
+    background: linear-gradient(to right, #340399, rgba(255, 255, 255, 0.85) 25%, rgba(0,0,0,0));
+}
+#bottom_bar{
+    bottom: 0px;
+    height: 122px;
+    background: linear-gradient(to right, #8934AE, #37009C);
+}
+#bottom_bar div{
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #340399, #D9F638 25%, rgba(0,0,0,0));
+}
+
+
+#blur{
+    top: 100px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), rgba(0,0,0,0) 70%);
+}
+#divider{
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
+    height: calc(100% - 222px);
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(255,255,255,0.8) 20% 80%, rgba(0,0,0,0));
+}
+
+#logo_login{
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#login_card{
+    display: none;
+    top:50%;
+    left: 50%;
+    transform: translate(20px, -50%);
+}
+/*An element for login card border, as curved gradient borders are impossible*/
+#card_border{
+    position: relative;
+    width: 300px;
+    padding: 1px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.5) 0% 70%, rgba(0,0,0,0));
+    border-radius: 7px;
+}
+#card_login{
+    width: 100%;
+    padding: 7px 15px;
+    margin: 0;
+    background: linear-gradient(to right, #4A00A9 0% 30%, #8b5adc);
+    border-radius: 6px;
+}
+
+#card_login input {
+    width: 160px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    padding: 4px 3px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+#nickname{
+    height: 28px;
+    font-size: 14px;
+}
+#room{
+    height: 18px;
+    font-size: 12px;
+    margin-top: 8px;
+}
+#login_button{
+    position: absolute;
+    top: 50%;
+    left:185px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url("../images/login_button.png");
+    background-size: 100%;
+}
+#login_button:hover{
+    background-position: 0px -20px;
+}
+#login_button:active{
+    background-position: 0px -40px;
+}
+#login_error{
+    position: absolute;
+    display: none;
+    background-color: white;
+    border-radius: 3px;
+    color: red;
+    padding: 8px;
+    font-size: 12px;
+    margin-top: 8px;
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.4);
+}
+#loading{
+    top: 50%;
+    left: 50%;
+    transform: translateX(20px);
+    font-weight: bold;
+    font-style: italic;
+    font-size: 35px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    color: white;
+}
+
+#readme_block{
+    left: 50%;
+    bottom: 15%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 12px;
+    border-radius: 3px;
+    color: #444444;
+    text-align: center;
+}
+
+#version {
+    position: absolute;
+    color: white;
+    font-size: 16px;
+    right: 16px;
+    bottom: 16px;
+}
+
+/*
+The login menu had complex CSS
+The Main UI is much simpler
+*/
+
+#content{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #452066;
+    background-image: url(../images/desktop_logo.png), url(../images/desktop_bg.png);
+    background-position: top left, center;
+    background-repeat: no-repeat;
+}
+
+/*CHATBAR*/
+#chatbar_cont{
+    user-select: none;
+    position: absolute;
+    width: 100%;
+    height: 32px;
+    bottom: 0;
+    background-color: #442D7E;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #7050C0, rgba(0,0,0,0) 20% 100%), linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255, 255, 255, 0.05));
+}
+#send_button{
+    display: inline-block;
+    width: 100px;
+    height: 32px;    
+    background-image: url(../images/start.png);
+}
+#send_button:hover{
+    background-position: 0px -33px;
+}
+#send_button:active{
+    background-position: 0px -66px;
+}
+#send_button span{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 35px;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.75);
+}
+#chatbar{
+    position: absolute;
+    top: 3px;
+    font-size: 15px;
+    width: calc(100% - 132px);
+}
+#tile{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 27px;
+    height: 30px;
+    background-image: url(/web/20240225120525im_/http://demo.bonziworld.org/img/tile.png), linear-gradient(to right, #5e4899 7%, rgba(0,0,0,0) 12% 88%), linear-gradient(to bottom, #5e4899 7%, rgba(0,0,0,0) 12% 88%, #5e4899 93% 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #452E81;
+    border: 1px solid rgba(0,0,0,0.7);
+}
+
+/*AGENTS*/
+.agent_cont{
+    position: fixed;
+    user-drag: none;
+    user-select: none;
+    z-index: 1;
+}
+.agent_cont div{
+    position: absolute;
+    bottom: 0;
+}
+.nametag{
+    position: absolute;
+    top: 0;
+    border: 1px solid black;    
+    padding: 7px;
+    background: #ffffe1;
+    font-size: 12px;
+    border-radius: 9px;
+    z-index: 2;
+    user-select: text;
+}
+.bubble-text{
+    display: none;
+}
+.bubble-right::after, .bubble-left::after{
+    position: absolute;
+    content: "";
+    width: 22px;
+    height: 14px;
+    top: 12px;
+}
+.bubble-right::after{
+    left: -22px;
+    background-image: url(../images/bubble_tail_r.png);
+}
+
+.bubble-left::after{
+    right: -22px;
+    background-image: url(../images/bubble_tail_l.png);
+}
+.bubble-left, .bubble-right{
+    position: absolute;
+    top: 40px;
+    background: #ffffe1;
+    border: 1px solid black;
+    border-radius: 9px;
+    width: 197px;
+    z-index: 2;
+    user-select: text;
+}
+.bubble-left{
+    right: 90%;
+}
+.bubble-right{
+    left: 90%;
+}
+.bubble_text{
+    position: relative;
+    padding: 12px;
+    font-size: 14px;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 175px;
+    margin: 0px;
+}
+
+#room_info {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+    line-height: 1.25;
+    text-align: right;
+    padding: 7px;
+    font-size: 12px;
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+}
+
+
+/*ERRORS*/
+#error_page{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+.error_message{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 32px;
+    background-color: #ffffe1;
+    color: black;
+    border: 1px solid black;
+    border-radius: 9px;
+    font-size: 17px;
+    line-height: 1;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 600px;
+    max-height: 100%;
+}
+
+
+
+/*CONTEXT MENU*/
+.contextmenu_cont{
+    position: fixed;
+    list-style-type: none;
+    z-index: 3;
+    background-color: white;
+    color: black;
+    padding: 2px;
+    font-size: 12px;
+    border: 1px solid grey;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    user-select: none;
+}
+.cmenu_item, .cmenu_disabled{
+    padding: 5px 22px;
+}
+.cmenu_disabled{
+    color: grey;
+}
+.cmenu_item:hover{
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+/*
+     FILE ARCHIVED ON 12:05:25 Feb 25, 2024 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:27:35 Mar 17, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 0.574
+  exclusion.robots: 0.022
+  exclusion.robots.policy: 0.01
+  esindex: 0.01
+  cdx.remote: 10.909
+  LoadShardBlock: 347.524 (3)
+  PetaboxLoader3.resolve: 500.286 (3)
+  PetaboxLoader3.datanode: 136.223 (4)
+  load_resource: 337.668
+*/
