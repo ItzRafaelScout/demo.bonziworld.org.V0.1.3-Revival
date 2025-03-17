@@ -1,0 +1,9 @@
+purple
+pink
+blue
+black
+green
+red
+brown
+peedy
+clippy
