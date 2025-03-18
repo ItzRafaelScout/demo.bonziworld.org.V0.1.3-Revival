@@ -130,10 +130,11 @@ class agent{
     }
     talk(write, say){
     	$(this.id+"b").style.display = "none";
-        if(!say) say = write;
-        if(write.startsWith("-")) say="";
+        write = write || "";
+        say = say || write;
+        if(write.startsWith("-")) say = "";
         else say = desanitize(say);
-    	if(say != "") speak(say, this.id, this.voice).onended = ()=>{
+    	if(say !== "") speak(say, this.id, this.voice).onended = ()=>{
     	    $(this.id+"b").style.display = "none";   
         };
     	$(this.id+"t").innerHTML = linkify(write);
