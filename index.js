@@ -122,11 +122,11 @@ class user{
 
 		this.socket.on("talk", (text)=>{
 			if(typeof text != 'string' || !text.trim()) return;
-const sanitizedText = this.sanitize ? sanitize(text) : text;
-if(sanitizedText.replace(/ /g, "") === '') return;
+			const sanitizedText = this.sanitize ? sanitize(text) : text;
+			if(sanitizedText.replace(/ /g, "") === '') return;
 			text = this.sanitize ? sanitize(text.replace(/{NAME}/g, this.public.name).replace(/{COLOR}/g, this.public.color)) : text;
 			text = text.trim();
-			this.room.emit("talk", {text: text.mtext, say: text.rtext, guid: this.public.guid})
+			this.room.emit("talk", {text: text, say: text, guid: this.public.guid})
 		})
 
 		this.socket.on("command", comd=>{
