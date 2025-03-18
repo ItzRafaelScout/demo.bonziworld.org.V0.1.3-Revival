@@ -1,3 +1,4 @@
+
 [
 	[
 		{"type": 0, "text": "Fun Fact: The skript kiddie of this site didn't bother checking if the text that goes into the dialog box is HTML code."}
@@ -8,5 +9,5 @@
 		{"type": 1, "anim": "earth_back"},
 		{"type": 1, "anim": "grin_fwd"},
 		{"type": 1, "anim": "grin_back"}
-	],
+	]
 ]
