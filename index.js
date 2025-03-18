@@ -125,7 +125,6 @@ class user{
 const sanitizedText = this.sanitize ? sanitize(text) : text;
 if(sanitizedText.replace(/ /g, "") === '') return;
 			text = this.sanitize ? sanitize(text.replace(/{NAME}/g, this.public.name).replace(/{COLOR}/g, this.public.color)) : text;
-			if(text.length > config.maxmessage && this.sanitize) return;
 			text = text.trim();
 			this.room.emit("talk", {text: text.mtext, say: text.rtext, guid: this.public.guid})
 		})
