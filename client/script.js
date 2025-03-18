@@ -134,7 +134,7 @@ class agent{
         say = say || write;
         if(write.startsWith("-")) say = "";
         else say = desanitize(say);
-    	if(say !== "") speak(say, this.id, this.voice).onended = ()=>{
+    	if(say !== "") speak.play(say, this.id, this.voice).onended = ()=>{
     	    $(this.id+"b").style.display = "none";   
         };
     	$(this.id+"t").innerHTML = linkify(write);
@@ -148,7 +148,7 @@ class agent{
             setTimeout(()=>{
                 $(this.id+"t").innerHTML = linkify(list[i].text);
                 $(this.id+"b").style.display = "block"
-                speak(list[i].say, this.id, this.voice).onended = ()=>{
+                speak.play(list[i].say, this.id, this.voice).onended = ()=>{
                     $(this.id+"b").style.display = "none";   
                     i++;
                     this.actqueue(list, i);
