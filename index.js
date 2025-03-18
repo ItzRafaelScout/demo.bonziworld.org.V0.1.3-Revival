@@ -5,9 +5,6 @@ const socketio = require("socket.io");
 const crypto = require("crypto");
 const commands = require("./commands.js");
 let uptime = 0;
-
-// Initialize Socket.IO with the HTTP server
-const io = socketio(server);
 setInterval(()=>{
     uptime++;
     Object.keys(rooms).forEach(room=>{
@@ -25,6 +22,7 @@ const app = new express();
 
 app.use(express.static("./client"));
 const server = http.Server(app);
+const io = socketio(server);
 server.listen(config.port);
 
 io.on("connection", (socket)=>{
