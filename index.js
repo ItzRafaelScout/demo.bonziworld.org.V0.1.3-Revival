@@ -87,13 +87,13 @@ class user{
   login(logindata){
 		if(this.loggedin) return;
     if(logindata.room == "desanitize") this.sanitize = false;
-		logindata.name =  sanitize(logindata.name);
+    let sanitizedName = this.sanitize ? sanitize(logindata.name || '') : (logindata.name || '');
     this.loggedin = true;
 	  if(logindata.room.replace(/ /g,"") == "") logindata.room = "default";
-	  if(logindata.name.rtext.replace(/ /g,"") == "") logindata.name = sanitize(config.defname);
+	  if(sanitizedName.replace(/ /g,"") == "") sanitizedName = sanitize(config.defname);
     this.public = {
       guid: guidgen(),
-			name: logindata.name.rtext,
+			name: sanitizedName,
       voice: {
 				pitch: 15+Math.round(Math.random()*110),
 				speed: 125+Math.round(Math.random()*150),
