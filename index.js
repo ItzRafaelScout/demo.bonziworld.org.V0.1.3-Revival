@@ -20,7 +20,7 @@ const config = commands.config;
 const colors = commands.colors;
 const app = new express();
 
-app.use(express.static("./client"));
+app.use(express.static("client"));
 const server = http.Server(app);
 const io = socketio(server);
 server.listen(config.port);
