@@ -88,10 +88,9 @@ class user{
 		if(this.loggedin) return;
     if(logindata.room == "desanitize") this.sanitize = false;
 		logindata.name =  sanitize(logindata.name);
-    logindata.name = markUpName(logindata.name);
     this.loggedin = true;
 	  if(logindata.room.replace(/ /g,"") == "") logindata.room = "default";
-	  if(logindata.name.rtext.replace(/ /g,"") == "") logindata.name = markUpName(config.defname);
+	  if(logindata.name.rtext.replace(/ /g,"") == "") logindata.name = sanitize(config.defname);
     this.public = {
       guid: guidgen(),
 			name: logindata.name.rtext,
@@ -122,7 +121,7 @@ class user{
 		this.room.loginCount++;
 
 		this.socket.on("talk", (text)=>{
-			if(typeof text != 'string' || markup(text).rtext.replace(/ /g, "") == '' && this.sanitize) return;
+			if(typeof text != 'string' || sanitize(text).rtext.replace(/ /g, "") == '' && this.sanitize) return;
 			text = this.sanitize ? sanitize(text.replace(/{NAME}/g, this.public.name).replace(/{COLOR}/g, this.public.color)) : text;
 			if(text.length > config.maxmessage && this.sanitize) return;
 			text = text.trim();
