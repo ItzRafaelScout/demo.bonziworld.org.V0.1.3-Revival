@@ -4,7 +4,7 @@
   "defname": "Anonymous",
   "runlevels": {
 		"pope": 2,
-    "kick": 2,
+    "kick": 2
   }
 }
     
