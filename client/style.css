@@ -228,7 +228,7 @@ The Main UI is much simpler
     top: 0px;
     width: 27px;
     height: 30px;
-    background-image: url(/img/tile.png), linear-gradient(to right, #5e4899 7%, rgba(0,0,0,0) 12% 88%), linear-gradient(to bottom, #5e4899 7%, rgba(0,0,0,0) 12% 88%, #5e4899 93% 100%);
+    background-image: url(./img/tile.png), linear-gradient(to right, #5e4899 7%, rgba(0,0,0,0) 12% 88%), linear-gradient(to bottom, #5e4899 7%, rgba(0,0,0,0) 12% 88%, #5e4899 93% 100%);
     background-position: center;
     background-repeat: no-repeat;
     background-color: #452E81;
@@ -269,12 +269,12 @@ The Main UI is much simpler
 }
 .bubble-right::after{
     left: -22px;
-    background-image: url(../img/bubble_tail_r.png);
+    background-image: url(../img/agents/bubble_tail_r.png);
 }
 
 .bubble-left::after{
     right: -22px;
-    background-image: url(../img/bubble_tail_l.png);
+    background-image: url(../img/agents/bubble_tail_l.png);
 }
 .bubble-left, .bubble-right{
     position: absolute;
