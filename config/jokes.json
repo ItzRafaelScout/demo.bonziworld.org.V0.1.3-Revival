@@ -1,34 +1,33 @@
+
 {
-	"start": [
-		[
-			{"type": 0, "text": "Yeah, of course {NAME} wants me to tell a joke."},
-			{"type": 0, "text": "\"Haha, look at the stupid {COLOR}{TYPE} telling jokes!\" Fuck you. It isn't funny."},
-			{"type": 0, "text": "But I'll do it anyway. Because you want me to. I hope you're happy."}
-		],
+  "start": [
+    [
+      {"type": 0, "text": "Yeah, of course {NAME} wants me to tell a joke."},
+      {"type": 0, "text": "\"Haha, look at the stupid {COLOR}{TYPE} telling jokes!\" Fuck you. It isn't funny."},
+      {"type": 0, "text": "But I'll do it anyway. Because you want me to. I hope you're happy."}
+    ]
   ],
-
   "middle": [
-		[
-			{"type": 0, "text": "What is easy to get into, but hard to get out of?"},
-			{"type": 0, "text": "Child support!"},
-			{"type": 1, "anim": "shrug_back"}
-		],
-		[
-			{"type": 0, "text": "What did the digital clock say to the grandfather clock?"},
-			{"type": 0, "text": "Suck my clock."},
-			{"type": 1, "anim": "shrug_back"}
-		],
-		[
-			{"type": 0, "text": "What goes in pink and comes out blue?"},
-			{"type": 0, "text": "Sonic's asshole."},
-			{"type": 1, "anim": "shrug_back"}
-		],
+    [
+      {"type": 0, "text": "What is easy to get into, but hard to get out of?"},
+      {"type": 0, "text": "Child support!"},
+      {"type": 1, "anim": "shrug_back"}
+    ],
+    [
+      {"type": 0, "text": "What did the digital clock say to the grandfather clock?"},
+      {"type": 0, "text": "Suck my clock."},
+      {"type": 1, "anim": "shrug_back"}
+    ],
+    [
+      {"type": 0, "text": "What goes in pink and comes out blue?"},
+      {"type": 0, "text": "Sonic's asshole."},
+      {"type": 1, "anim": "shrug_back"}
+    ]
   ],
-
   "end": [
-		[
-			{"type": 0, "text": "You know {NAME}, a good friend laughs at your jokes even when they're not so funny."},
-			{"type": 0, "text": "And you fucking suck. Thanks."}
-		],
+    [
+      {"type": 0, "text": "You know {NAME}, a good friend laughs at your jokes even when they're not so funny."},
+      {"type": 0, "text": "And you fucking suck. Thanks."}
+    ]
   ]
 }
