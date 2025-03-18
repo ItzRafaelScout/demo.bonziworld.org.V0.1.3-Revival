@@ -134,9 +134,14 @@ class agent{
         say = say || write;
         if(write.startsWith("-")) say = "";
         else say = desanitize(say);
-    	if(say !== "") speak.play(say, this.id, this.voice).onended = ()=>{
-    	    $(this.id+"b").style.display = "none";   
-        };
+    	if(say !== "" && speak && speak.play) {
+            const speech = speak.play(say, this.id, this.voice);
+            if(speech && typeof speech.onended !== 'undefined') {
+                speech.onended = () => {
+                    $(this.id+"b").style.display = "none";   
+                };
+            }
+        }
     	$(this.id+"t").innerHTML = linkify(write);
     	setTimeout(()=>{$(this.id+"b").style.display = "block"}, 100);
     }
