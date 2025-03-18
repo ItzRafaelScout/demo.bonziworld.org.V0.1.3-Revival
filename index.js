@@ -121,7 +121,9 @@ class user{
 		this.room.loginCount++;
 
 		this.socket.on("talk", (text)=>{
-			if(typeof text != 'string' || sanitize(text).rtext.replace(/ /g, "") == '' && this.sanitize) return;
+			if(typeof text != 'string' || !text.trim()) return;
+const sanitizedText = this.sanitize ? sanitize(text) : text;
+if(sanitizedText.replace(/ /g, "") === '') return;
 			text = this.sanitize ? sanitize(text.replace(/{NAME}/g, this.public.name).replace(/{COLOR}/g, this.public.color)) : text;
 			if(text.length > config.maxmessage && this.sanitize) return;
 			text = text.trim();
@@ -154,8 +156,7 @@ class user{
 }
 
 function sanitize(text){
-	//Return undefined if no param. Return sanitized if param exists.
-	if(text == undefined) return undefined;
+	if(!text) return '';
 	return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;").replace(/\[/g, "&lbrack;");
 }
 
