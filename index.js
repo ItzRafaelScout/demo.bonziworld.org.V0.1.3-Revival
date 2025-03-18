@@ -117,41 +117,40 @@ class user{
 			users: this.room.usersPublic,
 			level: this.level
 		})
-    this.room.loginCount++;
 
-    this.socket.on("talk", (text)=>{
-			try{
+		this.room.loginCount++;
+
+		this.socket.on("talk", (text)=>{
 			if(typeof text != 'string' || markup(text).rtext.replace(/ /g, "") == '' && this.sanitize) return;
 			text = this.sanitize ? sanitize(text.replace(/{NAME}/g, this.public.name).replace(/{COLOR}/g, this.public.color)) : text;
 			if(text.length > config.maxmessage && this.sanitize) return;
 			text = text.trim();
-      this.room.emit("talk", {text: text.mtext, say: text.rtext, guid: this.public.guid})
-    })
+			this.room.emit("talk", {text: text.mtext, say: text.rtext, guid: this.public.guid})
+		})
 
-  this.socket.on("command", comd=>{
-			try{
-			if(typeof comd != 'object') return;
-      if(typeof comd.param != 'string') comd.param = "";
-			if(typeof(commands.commands[comd.command]) != 'function') return;
-      commands.commands[comd.command](this, this.sanitize ? sanitize(comd.param) : comd.param);
-    }   
-  })
+		this.socket.on("command", comd=>{
+				if(typeof comd != 'object') return;
+				if(typeof comd.param != 'string') comd.param = "";
+				if(typeof(commands.commands[comd.command]) != 'function') return;
+				commands.commands[comd.command](this, this.sanitize ? sanitize(comd.param) : comd.param); 
+		})
 
-  this.socket.on("disconnect", ()=>{
-    this.room.emit("leave", this.public.guid);
-			delete this.room.usersPublic[this.public.guid];
-			delete this.room.users[this.public.guid];
-			if(Object.keys(this.room.private) delete rooms[this.room.name];
+		this.socket.on("disconnect", ()=>{
+			this.room.emit("leave", this.public.guid);
+				delete this.room.usersPublic[this.public.guid];
+				delete this.room.users[this.public.guid];
+				if(Object.keys(this.room.private) )delete rooms[this.room.name];
 
-      else if(this.room.ownerID == this.public.guid){
-				this.room.ownerID = this.room.usersPublic[Object.keys(this.room.usersPublic)[0]].guid;
-				this.room.users[this.room.ownerID].level = 1;
-				this.room.users[this.room.ownerID].socket.emit("update_self", {
-					level: this.room.users[this.room.ownerID].level,
-					roomowner: true
-				})
-			}
-  })
+				else if(this.room.ownerID == this.public.guid){
+					this.room.ownerID = this.room.usersPublic[Object.keys(this.room.usersPublic)[0]].guid;
+					this.room.users[this.room.ownerID].level = 1;
+					this.room.users[this.room.ownerID].socket.emit("update_self", {
+						level: this.room.users[this.room.ownerID].level,
+						roomowner: true
+					})
+				}
+		})
+	}
 }
 
 function sanitize(text){
